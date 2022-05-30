@@ -37,9 +37,9 @@ function FinalResult() {
             <hr />
             <br />
             <div>
-                <label htmlFor='check-doble'><h4 style={{ display: "inline" }}>¿Desea incluir Regalia Pascual?</h4></label>
+                <label htmlFor='check-doble'><h4 style={{ display: "inline" }}>¿Desea incluir pago navidad?</h4></label>
                 <input id="check-doble" defaultChecked type="checkbox" onChange={() => setDoble({ checked: !doble.checked, value: doble.value })} />
-                <label><b>Por Vacaciones: </b>{`RD$${NumberFormat.format(doble.value)}`}</label>
+                <label><b>Por Pago Navidad: </b>{`RD$${NumberFormat.format(doble.value)}`}</label>
             </div>
 
             <br />
