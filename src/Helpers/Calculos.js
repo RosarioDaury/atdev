@@ -108,7 +108,7 @@ export const Cesantia = (time, summary) => {
     return cesantiaValue;
 }
 
-export const Vacaciones = (vac, time, summary) => {
+export const Vacaciones = (vac, time, summary, info) => {
     let vacacionesValue;
     if (vac.checked === false) {
         if (time.years > 5) {
@@ -125,7 +125,23 @@ export const Vacaciones = (vac, time, summary) => {
             }
         }
     } else {
-        vacacionesValue = 0;
+        let date, year, final, months;
+
+        if (time.years > 0) {
+            date = new Date(info.finalDate);
+            year = date.getFullYear();
+            final = new Date(info.finalDate);
+            let difference = final - new Date(year, 0, 1);
+            months = Math.floor(difference / (1000 * 60 * 60 * 24 * 30));
+        } else {
+            months = time.months;
+        }
+
+        if (time.months >= 4) {
+            vacacionesValue = summary.daily * (months + 1);
+        } else {
+            vacacionesValue = 0;
+        }
     }
 
     return vacacionesValue;

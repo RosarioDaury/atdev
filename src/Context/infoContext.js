@@ -50,7 +50,7 @@ export const InfoProvider = ({ children }) => {
 
             setPreaviso({ checked: preaviso.checked, value: Preaviso(preaviso, Time, summary) });
             setCesantia(Cesantia(Time, summary));
-            setVacaciones({ checked: vacaciones.checked, value: Vacaciones(vacaciones, Time, summary) });
+            setVacaciones({ checked: vacaciones.checked, value: Vacaciones(vacaciones, Time, summary, info) });
             setDoble({ checked: doble.checked, value: Doble(info, doble, summary, Time) });
 
         } else {
