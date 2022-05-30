@@ -1,24 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
-
+import DataAndDate from "./Components/DataAndInfo/DataAndDate";
+import FinalResult from "./Components/Results/FinalResults/FinalResult";
+import Results from "./Components/Results/Result/Results";
+import Salaries from "./Components/SalaryZone/Salaries";
+import { InfoProvider } from "./Context/infoContext";
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <InfoProvider>
+      <div className="app">
+
+        <div className="header">
+          <img src="https://calculo.mt.gob.do/images/head-3.png" alt="imagen-header" />
+        </div>
+
+        <br />
+
+        <div className="data_and_date">
+          <DataAndDate />
+        </div>
+
+        <br />
+
+        <div className="double-zone">
+          <Salaries />
+          <div className="results">
+            <Results />
+            <br/>
+            <FinalResult />
+          </div>
+
+        </div>
+
+        <br />
+        <br />
+        <br />
+      </div>
+    </InfoProvider>
   );
 }
 
