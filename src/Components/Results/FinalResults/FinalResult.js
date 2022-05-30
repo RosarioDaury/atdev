@@ -4,7 +4,7 @@ import { Div } from './FinalResultsStyle'
 
 function FinalResult() {
     const NumberFormat = new Intl.NumberFormat('en-US');
-    const { setPreaviso, preaviso, CalculatePrestaciones, cesantia, vacaciones, setVacaciones, doble, setDoble } = useContext(InfoContext);
+    const { setPreaviso, preaviso, CalculatePrestaciones, cesantia, vacaciones, setVacaciones, doble, setDoble, Time } = useContext(InfoContext);
 
     return (
         <Div>
@@ -46,10 +46,16 @@ function FinalResult() {
             <hr />
             <br />
 
-            <div style={{ boxSizing: "border-box", width: "100%", padding: "2rem", background: "gray" }}>
+            <div style={{ boxSizing: "border-box", width: "100%", padding: "2rem", background: "#6988e6" }}>
+                <label style={{ color: "white" }}> <b>Tiempo Laborando: </b>{`${Time.years} Años, ${Time.months} Meses, ${Time.days} Dias`}</label>
+            </div>
+
+            <div style={{ boxSizing: "border-box", width: "100%", padding: "1.5rem", background: "gray" }}>
                 <label style={{ color: "white" }}><b>Total a recibir: </b>{`RD$${NumberFormat.format(preaviso.value + cesantia + vacaciones.value + doble.value)}`}</label>
             </div>
+
             <br />
+
             <button onClick={CalculatePrestaciones}>Calcular Prestaciones</button>
         </Div>
     )
