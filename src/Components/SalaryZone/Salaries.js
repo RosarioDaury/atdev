@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { InfoContext } from '../../Context/infoContext';
 import SalariesRow from './SalariesRow'
 import { Table, Div } from './SalariesTableStyles'
