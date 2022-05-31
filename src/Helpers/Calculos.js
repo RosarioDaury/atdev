@@ -170,6 +170,8 @@ export const Doble = (info, doble, summary, time) => {
             if (days > 0) {
                 let plus = summary.average * (days / 30);
                 dobleValue = (dobleValue + plus) / 12;
+            } else {
+                dobleValue = dobleValue / 12;
             }
         } else {
             if (days > 0) {

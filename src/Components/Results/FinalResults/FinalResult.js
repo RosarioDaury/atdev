@@ -4,7 +4,7 @@ import { Div } from './FinalResultsStyle'
 
 function FinalResult() {
     const NumberFormat = new Intl.NumberFormat('en-US');
-    const { setPreaviso, preaviso, CalculatePrestaciones, cesantia, vacaciones, setVacaciones, doble, setDoble, Time } = useContext(InfoContext);
+    const { setPreaviso, preaviso, CalculatePrestaciones, cesantia, vacaciones, setVacaciones, doble, setDoble, Time, Clear } = useContext(InfoContext);
 
     return (
         <Div>
@@ -56,7 +56,8 @@ function FinalResult() {
 
             <br />
 
-            <button onClick={CalculatePrestaciones}>Calcular Prestaciones</button>
+            <button onClick={CalculatePrestaciones} style={{ borderRadius: "0" }}>Click aqui para Calcular Prestaciones</button>
+            <button onClick={Clear} style={{ borderRadius: "0", background: "gray" }}>Limpiar Campos</button>
         </Div>
     )
 }

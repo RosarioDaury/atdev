@@ -3,8 +3,8 @@ import { InfoContext } from '../../Context/infoContext';
 import SalariesRow from './SalariesRow'
 import { Table, Div } from './SalariesTableStyles'
 function Salaries() {
-    const { Time, Calculate } = useContext(InfoContext);
-    const [length, setLength] = useState(0);
+    const { Time, Calculate, length, setLength } = useContext(InfoContext);
+
     useEffect(() => {
         if (Time.years > 0) {
             setLength(12);
@@ -46,7 +46,7 @@ function Salaries() {
                 </tbody>
             </Table>
             <br />
-            {length > 0 ? <button onClick={() => Calculate(length)}>Calcular Sueldo</button> : ""}
+            {length > 0 ? <button onClick={() => Calculate(length)}>2. Click Aqui luego de ingresar sueldos</button> : ""}
         </Div>
     )
 }

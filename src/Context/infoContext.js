@@ -19,6 +19,20 @@ export const InfoProvider = ({ children }) => {
     const [cesantia, setCesantia] = useState(0);
     const [vacaciones, setVacaciones] = useState({ checked: false, value: 0 });
     const [doble, setDoble] = useState({ checked: true, value: 0 });
+    const [length, setLength] = useState(0);
+
+
+    const Clear = () => {
+        setInfo(initialState);
+        setAllSalaries({});
+        setTime({ years: 0, months: 0, days: 0 });
+        setSummary({ total: 0, average: 0, daily: 0 });
+        setPreaviso({ checked: false, value: 0 });
+        setCesantia(0);
+        setVacaciones({ checked: false, value: 0 });
+        setDoble({ checked: true, value: 0 });
+        setLength(0);
+    }
 
     const onChange = (e) => {
         setInfo({
@@ -82,7 +96,7 @@ export const InfoProvider = ({ children }) => {
 
 
 
-    const data = { info, onChange, allSalaries, setAllSalaries, getTime, Time, Calculate, summary, setPreaviso, preaviso, CalculatePrestaciones, cesantia, vacaciones, setVacaciones, doble, setDoble };
+    const data = { info, onChange, allSalaries, setAllSalaries, getTime, Time, Calculate, summary, setPreaviso, preaviso, CalculatePrestaciones, cesantia, vacaciones, setVacaciones, doble, setDoble, Clear, length, setLength };
 
     return <InfoContext.Provider value={data}>{children}</InfoContext.Provider>
 };

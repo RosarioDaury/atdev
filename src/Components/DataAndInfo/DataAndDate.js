@@ -90,7 +90,7 @@ function DataAndDate() {
                 <br />
                 <br />
 
-                <button onClick={() => getTime()}>Empezar</button>
+                <button onClick={() => getTime()}>1. Click aqui luego de ingresar informacion</button>
 
             </div>
 
