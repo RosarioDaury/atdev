@@ -23,7 +23,7 @@ export const InfoProvider = ({ children }) => {
 
 
     const Clear = () => {
-        setInfo(initialState);
+        setInfo({ initialDate: "", finalDate: "", period: info.period, type: info.type });
         setAllSalaries({});
         setTime({ years: 0, months: 0, days: 0 });
         setSummary({ total: 0, average: 0, daily: 0 });
@@ -41,20 +41,17 @@ export const InfoProvider = ({ children }) => {
         })
     }
 
-    const Calculate = (l) => {
+    const Calculate = (l, el) => {
         const all = [];
-        for (var i in allSalaries) {
-            all.push(allSalaries[i]);
+        let sibling = el.children[0];
+
+        while (sibling) {
+            all.push(parseInt(sibling.children[1].children[0].value) + parseInt(sibling.children[2].children[0].value));
+            sibling = sibling.nextSibling;
         }
 
-        if (all.length === l) {
 
-            setSummary({ total: Total(all), average: Average(all, info.period), daily: Daily(all, info.period, info.type) });
-
-
-        } else {
-            window.alert("No se puede calcular el sueldo hasta que se hayan calculado todos los salarios");
-        }
+        setSummary({ total: Total(all), average: Average(all, info.period), daily: Daily(all, info.period, info.type) });
     }
 
     const CalculatePrestaciones = () => {

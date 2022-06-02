@@ -1,32 +1,36 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { InfoContext } from '../../Context/infoContext';
-
+import { useRef } from 'react';
 function SalariesRow(props) {
-    const [salaries, setSalaries] = useState({ salary: 0, bonus: 0 });
-    const { setAllSalaries, allSalaries } = useContext(InfoContext);
-    const NumberFormat = new Intl.NumberFormat('en-US');
+    const ref = useRef();
+    const first = ref.current?.children[1]?.children[0]?.value;
+    const second = ref.current?.children[2]?.children[0]?.value;
 
+    const complete = () => {
+        const originalSalary = ref.current.children[1].children[0].value;
+        const originalBonus = ref.current.children[2].children[0].value;
+        let sibling = ref.current.nextSibling;
 
-    const onChange = (e) => {
-        const { name, value } = e.target;
-        setSalaries({ ...salaries, [name]: value });
+        while (sibling) {
+            sibling.children[1].children[0].value = originalSalary;
+            sibling.children[2].children[0].value = originalBonus;
+            sibling = sibling.nextSibling;
+        }
     }
 
-    useEffect(() => {
-        let total = (salaries.salary ? parseInt(salaries.salary) : 0) + (salaries.bonus ? parseInt(salaries.bonus) : 0);
-        setAllSalaries({ ...allSalaries, [props.index + 1]: total });
-    }, [salaries]);
-
     return (
-        <tr>
+        <tr ref={ref}>
             <td>{props.index + 1}</td>
             <td>
-                <input type="number" min={1} placeHolder={0} name="salary" onChange={onChange} />
+                <input type="number" min={1} placeholder={0} name="salary" defaultValue={0} />
             </td>
             <td>
-                <input type="number" min={1} placeHolder={0} name="bonus" onChange={onChange} />
+                <input type="number" min={1} placeholder={0} name="bonus" defaultValue={0} />
             </td>
-            <td>{NumberFormat.format((salaries.salary ? parseInt(salaries.salary) : 0) + (salaries.bonus ? parseInt(salaries.bonus) : 0))}</td>
+            <td>
+                {parseInt(first ? first : 0) + parseInt(second ? second : 0)}
+            </td>
+            <td>
+                <button onClick={complete}>Completar</button>
+            </td>
         </tr>
     )
 }

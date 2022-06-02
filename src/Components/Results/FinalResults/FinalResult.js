@@ -46,7 +46,7 @@ function FinalResult() {
             <hr />
             <br />
 
-            <div style={{ boxSizing: "border-box", width: "100%", padding: "2rem", background: "#6988e6" }}>
+            <div style={{ boxSizing: "border-box", width: "100%", padding: "2rem", background: "gray" }}>
                 <label style={{ color: "white" }}> <b>Tiempo Laborando: </b>{`${Time.years} Años, ${Time.months} Meses, ${Time.days} Dias`}</label>
             </div>
 
@@ -57,6 +57,8 @@ function FinalResult() {
             <br />
 
             <button onClick={CalculatePrestaciones} style={{ borderRadius: "0" }}>Click aqui para Calcular Prestaciones</button>
+            <br />
+            <br />
             <button onClick={Clear} style={{ borderRadius: "0", background: "gray" }}>Limpiar Campos</button>
         </Div>
     )

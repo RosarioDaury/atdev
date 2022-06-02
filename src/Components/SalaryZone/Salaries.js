@@ -2,9 +2,10 @@ import React, { useContext, useEffect } from 'react'
 import { InfoContext } from '../../Context/infoContext';
 import SalariesRow from './SalariesRow'
 import { Table, Div } from './SalariesTableStyles'
+import { useRef } from 'react';
 function Salaries() {
     const { Time, Calculate, length, setLength } = useContext(InfoContext);
-
+    const ref = useRef();
     useEffect(() => {
         if (Time.years > 0) {
             setLength(12);
@@ -20,6 +21,8 @@ function Salaries() {
     }, [Time])
 
 
+
+
     return (
         <Div>
             <Table>
@@ -29,9 +32,10 @@ function Salaries() {
                         <th>Salario</th>
                         <th>Comision</th>
                         <th>Total</th>
+                        <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody ref={ref}>
                     {length > 0
                         ? (
                             new Array(length).fill(0).map((value, index) => <SalariesRow index={index} key={index} />)
@@ -46,7 +50,9 @@ function Salaries() {
                 </tbody>
             </Table>
             <br />
-            {length > 0 ? <button onClick={() => Calculate(length)}>2. Click Aqui luego de ingresar sueldos</button> : ""}
+            <br />
+            <br />
+            {length > 0 ? <button onClick={() => Calculate(length, ref.current)}>2. Click Aqui luego de ingresar sueldos</button> : ""}
         </Div>
     )
 }

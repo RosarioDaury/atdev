@@ -71,24 +71,30 @@ export const Preaviso = (preaviso, time, summary) => {
 }
 
 const getDays = (months) => {
-    if (months >= 3 && months <= 5) {
-        return 6
+    if (months < 3) {
+        return 0
     } else {
-        if (months >= 6 && months <= 11) {
-            return 13
+        if (months >= 3 && months <= 5) {
+            return 6
+        } else {
+            if (months >= 6 && months <= 11) {
+                return 13
+            }
         }
     }
+
 }
 
 export const Cesantia = (time, summary) => {
     let cesantiaValue;
     let days;
     if (time.years > 5) {
-        days = (time.years * 23) + getDays(time.months);
+        days = (time.years * 23) + (getDays(time.months));
         cesantiaValue = summary.daily * days;
     } else {
         if (time.years >= 1 && time.years <= 5) {
-            days = (time.years * 21) + getDays(time.months);
+            days = (time.years * 21) + (getDays(time.months));
+            console.log(getDays(time.months));
             cesantiaValue = summary.daily * days;
         } else {
             if (time.months >= 6 && time.months <= 11) {
